@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Tuscola - Sistema Prenotazioni Eventi</title>
+	<title>Tuscola - Sistema Prenotazioni Eventi - Home Page</title>
   <!-- includo i fogli di stile tra cui bootstrap-->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
@@ -27,6 +27,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="index.html">Lista Eventi</a>
+            <a class="dropdown-item" href="evento/mieieventi.html" id="linkMieiEventi">I miei Eventi</a>
             <div class="dropdown-divider"></div>	
             <a class="dropdown-item" href="utente/login.html" id="linkLogin">Login</a>
             <a class="dropdown-item" href="utente/logout.html" id="linkLogout">Logout</a>
@@ -65,10 +66,12 @@
       document.getElementById("userName").innerText = "Ciao " + primaMaiuscola(nomeUtente) + " !";
       document.getElementById("linkLogin").style.display = "none";
       document.getElementById("linkLogout").style.display = "block";
+      document.getElementById("linkMieiEventi").style.display = "block";
     }else{
       document.getElementById("userName").innerText = "Utente non connesso";
       document.getElementById("linkLogin").style.display = "block";
       document.getElementById("linkLogout").style.display = "none";
+      document.getElementById("linkMieiEventi").style.display = "none";
     }
 
   });
