@@ -28,7 +28,7 @@ function elencoEventi(testoRicerca) {
             vDiv.classList.add('col-sm-6','col-lg-4','mb-4');
             vDiv.innerHTML = `
                 <div class="card">
-                    <a class="card-block stretched-link text-decoration-none" href="javascript:void(0);" onclick="openPageDettaglio(${evento.idEvento})">
+                    <a class="card-block stretched-link text-decoration-none" href="javascript:void(0);" onclick="openPageDettaglio(${evento.idEvento},'evento/')">
                         <img src="img/${evento.imglink}" class="card-img-top" >
                         <div class="card-body">
                             <h5 class="card-title">${evento.titolo}</h5>
@@ -136,9 +136,9 @@ function dettaglioEvento(idEvento) {
                 <div class="card-body" id="messaggi">
                 </div>
                 <div class="card-body">
-                    <a href="javascript:void(0);" onclick="registraPrenotazione()" class="card-link" id="lblSalva">Salva</a>
-                    <a href="javascript:void(0);" onclick="cancellaPrenotazione()" class="card-link" id="lblCancella">Cancella</a>
-                    <a href="javascript:void(0);" onclick="openPageBack()" class="card-link">Indietro</a>
+                    <a href="javascript:void(0);" onclick="registraPrenotazione()" class="card-link" id="lblSalva"><i class=\"fa fa-save fa-lg\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Salva\"></i></a>
+                    <a href="javascript:void(0);" onclick="cancellaPrenotazione()" class="card-link" id="lblCancella"><i class=\"fa fa-eraser fa-lg\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Cancella\"></i></a>
+                    <a href="javascript:void(0);" onclick="openPageBack()" class="card-link"><i class=\"fa fa-backward fa-lg\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Indietro\"></i></a>
                 </div>
             </div>
             `;
@@ -188,7 +188,7 @@ function iMieiEventi(idUtente) {
                 <td>${giornoSettimana(evento.dataEvento)} ${evento.dataEvento}</td>
                 <td>${evento.strOraEvento}</td>
                 <td></td>
-                <td><i class='fa fa-edit'></i></td>
+                <td><a href="javascript:void(0);" onclick="openPageDettaglio(${evento.idEvento},'')"><i class=\"fa fa-edit\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Dettaglio\"></i></a></td>
             `;
             container.appendChild(vTr);
         });
@@ -390,11 +390,11 @@ function cancellaPrenotazione() {
     });
 }
 
-function openPageDettaglio(valId) {
+function openPageDettaglio(valId,uPath) {
     // Salvo L'Id evento nel SessionStorage
     sessionStorage.setItem('idVis', valId)
     // apro la pagina del dettaglio dell'evento
-    window.location.href = `evento/dettaglio.html`;
+    window.location.href = uPath + `dettaglio.html`;
 }
 
 function openPageBack(){
