@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tuscola - Sistema Prenotazioni Eventi - I Miei Eventi</title>
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/allx.css" >
+    <script src="../js/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js" ></script>
+</head>
+<body>
+  <!-- creo la navbar nella parte alta dell pagina-->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light"  style="background-color: #f9f9fb;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Menù
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="../index.html">Lista Eventi</a>
+            <a class="dropdown-item" href="mieieventi.html" id="linkMieiEventi">I miei Eventi</a>
+            <div class="dropdown-divider"></div>	
+            <a class="dropdown-item" href="../utente/login.html" id="linkLogin">Login</a>
+            <a class="dropdown-item" href="../utente/logout.html" id="linkLogout">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="navbar-brand" id="userName"></div>
+  </nav>
+  <div class="container"> 
+      <!--<div class="row">
+          <div class="col-sm-9 col-md-7 col-lg-5 mx-auto" id="container-dettaglio">
+            in questo div vengono caricati tutti i dettagli dell evento
+          </div>
+      </div> -->
+      <table class="table table-bordered table-hover table-striped" id="tabMieiEventi">
+        <tbody>
+        <!--<thead class="table-light">
+        <tbody>-->
+        <tr>
+          <td scope="col">Titolo</th>
+          <th scope="col">Giorno</th>
+          <th scope="col">Ora</th>
+          <th scope="col">Posti Prenotati</th>
+          <th scope="col"></th>
+        </tr>
+        
+      </tbody>
+      </table>
+  </div> 
+
+</body>
+<script>
+
+  // fai il retrive dei dati di sessione
+  const pidVis = sessionStorage.getItem('idVis');
+  const nomeUtente = sessionStorage.getItem('nomeUtente');
+
+  if (nomeUtente !== null) {
+    document.getElementById("userName").innerText = "Ciao " + primaMaiuscola(nomeUtente) + " !";
+    document.getElementById("linkLogin").style.display = "none";
+    document.getElementById("linkLogout").style.display = "block";
+    document.getElementById("linkMieiEventi").style.display = "block";
+  }else{
+    document.getElementById("userName").innerText = "Utente non connesso";
+    document.getElementById("linkLogin").style.display = "block";
+    document.getElementById("linkLogout").style.display = "none";
+    document.getElementById("linkMieiEventi").style.display = "none";
+  }
+
+  const idUtente = sessionStorage.getItem('idUser');
+
+  iMieiEventi(idUtente);
+
+</script>
+</html>
