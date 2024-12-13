@@ -158,6 +158,47 @@ function dettaglioEvento(idEvento) {
     });
 }
 
+function iMieiEventi(idUtente) {
+    // chiama l'endpoint api per fare il retrive delle informazioni di tutti gli eventi prenotati dall utente da oggi in poi
+
+    // Costruire l'URL con il parametro di ricerca
+    const urlEndP = new URL('https://localhost:5000/eventi');
+    
+    // Inserisci il parametro di ricerca nell'url dell'endpoint
+    urlEndP.searchParams.append('IdUtente', idUtente);
+
+    fetch(urlEndP, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+
+    .then(response => response.json())
+    .then(data => {
+
+        // seleziono la tabella tabMieiEventi
+        const container = document.getElementById('tabMieiEventi');  
+        
+        // Aggiungi una riga per ogni evento
+        data.forEach(evento => {
+            const vTr = document.createElement('tr');
+            vTr.innerHTML = `
+                <td>${evento.titolo}</td>
+                <td>${giornoSettimana(evento.dataEvento)} ${evento.dataEvento}</td>
+                <td>${evento.strOraEvento}</td>
+                <td></td>
+                <td><i class='fa fa-edit'></i></td>
+            `;
+            container.appendChild(vTr);
+        });
+    })
+    .catch(error => {
+        console.error('Errore nel recupero degli eventi utente. Errore :', error);
+    });
+}
+
+
 function registraUtente() {
 
     // preleva il valore dei campi appena inseriti nella pagina di registrazione
