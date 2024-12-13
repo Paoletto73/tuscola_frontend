@@ -136,9 +136,9 @@ function dettaglioEvento(idEvento) {
                 <div class="card-body" id="messaggi">
                 </div>
                 <div class="card-body">
-                    <a href="javascript:void(0);" onclick="registraPrenotazione()" class="card-link" id="lblSalva"><i class=\"fa fa-save fa-lg\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Salva\"></i></a>
-                    <a href="javascript:void(0);" onclick="cancellaPrenotazione()" class="card-link" id="lblCancella"><i class=\"fa fa-eraser fa-lg\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Cancella\"></i></a>
-                    <a href="javascript:void(0);" onclick="openPageBack()" class="card-link"><i class=\"fa fa-backward fa-lg\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Indietro\"></i></a>
+                    <a href="javascript:void(0);" onclick="registraPrenotazione()" class="card-link" id="lblSalva"><i class="fa fa-save fa-lg" data-toggle="tooltip" data-placement="top" title="Salva"></i></a>
+                    <a href="javascript:void(0);" onclick="cancellaPrenotazione()" class="card-link" id="lblCancella"><i class="fa fa-eraser fa-lg" data-toggle="tooltip" data-placement="top" title="Cancella"></i></a>
+                    <a href="javascript:void(0);" onclick="openPageBack()" class="card-link"><i class="fa fa-backward fa-lg" data-toggle="tooltip" data-placement="top" title="Indietro"></i></a>
                 </div>
             </div>
             `;
@@ -165,7 +165,7 @@ function iMieiEventi(idUtente) {
     const urlEndP = new URL('https://localhost:5000/eventi');
     
     // Inserisci il parametro di ricerca nell'url dell'endpoint
-    urlEndP.searchParams.append('IdUtente', idUtente);
+    urlEndP.searchParams.append('idUtente', idUtente);
 
     fetch(urlEndP, {
         method: 'GET',
@@ -187,8 +187,8 @@ function iMieiEventi(idUtente) {
                 <td>${evento.titolo}</td>
                 <td>${giornoSettimana(evento.dataEvento)} ${evento.dataEvento}</td>
                 <td>${evento.strOraEvento}</td>
-                <td></td>
-                <td><a href="javascript:void(0);" onclick="openPageDettaglio(${evento.idEvento},'')"><i class=\"fa fa-edit\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Dettaglio\"></i></a></td>
+                <td>${evento.strNumeroPrenotati}</td>
+                <td><a href="javascript:void(0);" onclick="openPageDettaglio(${evento.idEvento},'')"><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Dettaglio"></i></a></td>
             `;
             container.appendChild(vTr);
         });
