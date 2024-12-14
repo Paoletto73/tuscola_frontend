@@ -178,7 +178,12 @@ function iMieiEventi(idUtente) {
     .then(data => {
 
         // seleziono la tabella tabMieiEventi
-        const container = document.getElementById('tabMieiEventi');  
+        const container = document.getElementById('tabMieiEventi');
+        //container.innerHTML="";  
+
+        // pulisci i vecchi eventi caricati in tabella
+        //const tbody = document.querySelector("#tabMieiEventi tbody");
+        //tbody.innerHTML = "";
         
         // Aggiungi una riga per ogni evento
         data.forEach(evento => {
