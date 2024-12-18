@@ -1,7 +1,7 @@
 
 function elencoEventi(testoRicerca) {
     // chiama l'endpoint api per fare il retrive delle informazioni di tutti gli eventi caricati a sistema dalla data di oggi in poi
-    // oppure degli eventi che hanno un testo specifico
+    // oppure degli eventi che hanno un testo specifico nel titolo 
 
     // Costruire l'URL con il parametro di ricerca
     const urlEndP = new URL('https://localhost:5000/eventi');
@@ -179,12 +179,7 @@ function iMieiEventi(idUtente) {
 
         // seleziono la tabella tabMieiEventi
         const container = document.getElementById('tabMieiEventi');
-        //container.innerHTML="";  
-
-        // pulisci i vecchi eventi caricati in tabella
-        //const tbody = document.querySelector("#tabMieiEventi tbody");
-        //tbody.innerHTML = "";
-        
+       
         // Aggiungi una riga per ogni evento
         data.forEach(evento => {
             const vTr = document.createElement('tr');
@@ -202,7 +197,6 @@ function iMieiEventi(idUtente) {
         console.error('Errore nel recupero degli eventi utente. Errore :', error);
     });
 }
-
 
 function registraUtente() {
 
