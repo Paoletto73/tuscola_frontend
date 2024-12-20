@@ -72,16 +72,15 @@
 
   const idUtente = sessionStorage.getItem('idUser');
 
-        // Aggiunge il listener per l'evento 'focus'
-        window.addEventListener("focus", iMieiEventi);
+  // Aggiunge il listener per l'evento focus
+  window.addEventListener("focus", iMieiEventi);
 
-        // Listener per l'evento 'visibilitychange'
-        document.addEventListener("visibilitychange", () => {
-            if (document.visibilityState === "visible") {
-              iMieiEventi(idUtente);
-            }
-        });
-
+  // faccio il reload della pagina quando viene visualizzata ed ha il focus
+  document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible") {
+        location.reload();
+      }
+  });
 
   iMieiEventi(idUtente);
 
