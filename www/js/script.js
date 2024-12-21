@@ -227,7 +227,6 @@ function registraUtente() {
         return;
     }
 
-
     // preparo l'array di informazioni da inviare all'end point
     const userData = {nome,cognome,email,password};
 
@@ -451,7 +450,7 @@ function chiudiMessageBox() {
 }
 
 function passwordComplessa(password) {
-    // stringa di confronto per password complessa
+    // pattern di confronto per password complessa
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     return regex.test(password);
 }
