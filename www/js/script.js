@@ -205,8 +205,16 @@ function registraUtente() {
     const cognome = document.getElementById('cognome').value.toLowerCase();
     const email = document.getElementById('email').value.toLowerCase();
     const password = document.getElementById('password').value;
+    const gdpr = document.getElementById('chkGdpr');
 
     const messaggiDiv = document.getElementById('messaggi');
+
+    // verifica se è stato espresso il consenso per il gdpr
+    if (gdpr.checked == false){
+        messaggiDiv.style.color = 'red';
+        messaggiDiv.textContent = 'Attenzione. Dare il consenso al trattamento dei dati.';
+        return;
+    }
 
     // verifica se i campi sono tutti pieni
     if (!password || !nome || !cognome || !email) {
